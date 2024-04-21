@@ -1,13 +1,30 @@
 <h1>New Book</h1>
 
-<form action="/books/create" role="form" method="post">
+<form action="/books/upsert" role="form" method="post">
+  {{#if book}}
+    <div>
+      <h2>{{book.title}}</h2>
+      <input type="hidden" name="id" value="{{bookIndex}}">
+    </div>
+  {{/if}}
   <div>
     <label for="title">Title</label>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" {{#if book}}value="{{book.title}}"{{/if}}>
   </div>
   <div>
     <label for="publishing_year">Publishing year</label>
-    <input type="number" step="1" placeholder="2000" id="publishing_year" name="publishingYear">
+    <input type="number" step="1" placeholder="2000" id="publishing_year" name="publishingYear" {{#if book}}value="{{book.publishingYear}}"{{/if}}>
+  </div>
+  <div class="mb-3">
+    <label for="authorIds">Author</label>
+    <select name="authorIds" multiple id="authorIds">
+      <option disabled selected value>-- select Author --</option>
+      {{#each authors}}
+        <option value="{{@index}}" {{#if (and @root.book (in @root.book.authorIds @index))}}selected{{/if}}>
+          {{this.firstName}} {{this.lastName}}
+        </option>
+      {{/each}}
+    </select>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

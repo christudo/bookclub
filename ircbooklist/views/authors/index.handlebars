@@ -1,6 +1,8 @@
 <h1>Authors</h1>
 <a href="/authors/form">Create a new author</a>
-
 {{#each authors}}
-<li>{{this.firstName}} {{this.lastName}}</li>
+<li>
+  {{@index}} - {{this.firstName}} {{this.lastName}}
+  <a href="/authors/edit?id={{@index}}">edit</a>
+</li>
 {{/each}}
