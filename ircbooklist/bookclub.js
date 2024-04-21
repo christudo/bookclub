@@ -1,10 +1,15 @@
 const express = require('express')                  // Include the express package
-const app = express()                               // call the express function to create the app
-const port = 3000                                   // set the port of the web server
+const bodyParser = require('body-parser')           // call the express function to create the app
 
 const indexRouter = require('./routes/index');      // Include the new index.js route file
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
+
+const app = express()
+const port = 3000                                   // set the port of the web server
+
+//extra platform setup
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // view engine setup
 var handlebars = require('express-handlebars').create();

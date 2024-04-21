@@ -1,6 +1,6 @@
 <h1>Authors</h1>
-<ul>
- {{#each authors}}
-   <li>{{this}}</li>
- {{/each}}
-</ul>
+<a href="/authors/form">Create a new author</a>
+
+{{#each authors}}
+<li>{{this.firstName}} {{this.lastName}}</li>
+{{/each}}
