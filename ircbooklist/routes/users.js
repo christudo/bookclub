@@ -38,6 +38,9 @@ router.post('/register', async (req, res, next) => {
 });
 
 router.get('/login', async (req, res, next) => {
+  if (helpers.isLoggedIn(req, res)) {
+    return
+  }
   res.render('users/login', { title: 'Bookclub || Login' });
 });
 
@@ -87,4 +90,4 @@ router.get('/profile', async (req, res, next) => {
   res.render('users/profile', { title: 'Bookclub || Profile', user: req.session.currentUser, booksUser: booksUser });
 });
 
-module.exports = router;
+module.exports = router

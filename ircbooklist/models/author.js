@@ -1,5 +1,5 @@
 const authors = [
-  {firstName: "Viet", lastName: "Thanh Nguyen", authorIds: ["0", "2"]},
+  {firstName: "Viet", lastName: "Thanh Nguyen", authorId: "0"},
   {firstName: "Patricia", lastName: "Beatty", authorId: "1"},
   {firstName: "Jana", lastName: "Laiz", authorId: "2"},
 ];

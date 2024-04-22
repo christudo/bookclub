@@ -4,26 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
-      <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
   </head>
-    <body data-bs-theme="light"></body>
-  <body>
+    <body data-bs-theme="light">
     {{#if flash}}
       <div>
         <strong>{{flash.intro}}</strong> {{{flash.message}}}
       </div>
     {{/if}}
-    <nav>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav me-auto mb-2 mb-lg-0">
-            <a class="navbar-brand" href="#">Bookclub</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bookclub</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
             <a class="nav-link" href="/authors">authors</a>
-            <a class="nav-link" href="/books">books</a>
-          </div>
-      <div class="d-flex">
-          <div class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="nav-link" href="/books">ooks</a>
             {{#if currentUser}}
-               <a class="nav-link" href="/users/profile">Welcome {{currentUser.name}}</a>
+              <a class="nav-link" href="/users/profile">Welcome {{currentUser.name}}</a>
               <form action="/users/logout" role="form" method="post" class="d-flex">
                 <input type="hidden" name="_csrf" value="{{_csrfToken}}">
                 <button class="btn btn-outline-success" type="submit">Logout</button>
@@ -34,7 +34,8 @@
             {{/if}}
           </div>
         </div>
-      </nav>
+      </div>
+    </nav>
     <div class="container">
     {{{body}}}
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -1,11 +1,11 @@
 <h1>New Author</h1>
 
 <form action="/authors/upsert" role="form" method="post">
-<input type="hidden" name="_csrf" value="{{_csrfToken}}">
-{{#if author}}
+  <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+  {{#if author}}
     <div>
       <h2>{{author.firstName}} {{author.lastName}}</h2>
-        <input type="hidden" name="id" value="{{author.Index}}">
+      <input type="hidden" name="id" value="{{authorIndex}}">
     </div>
   {{/if}}
   <div>

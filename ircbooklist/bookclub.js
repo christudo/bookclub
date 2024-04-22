@@ -81,11 +81,6 @@ app.use('/books', booksRouter);
 app.use('/users', usersRouter);
 app.use('/books_users', booksUsersRouter);
 
-/* GET home page. */
-app.use('/', function(req, res, next) {
-    res.send("<h1>Happy World Book Day</h1>");
-  });
-
 // custom 404 page
 app.use((req, res) => {
   res.status(404)
@@ -101,5 +96,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(port, () => console.log(
-  `Express started on http://localhost:${port}; ` +
-  `press Ctrl-C to terminate.`))
+`Express started on http://localhost:${port}; ` +
+`press Ctrl-C to terminate.`))

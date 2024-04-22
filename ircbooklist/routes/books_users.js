@@ -15,4 +15,4 @@ router.post('/upsert', async (req, res, next) => {
   res.redirect(303, redirect)
 });
 
-module.exports = router;
+module.exports = router

@@ -5,4 +5,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Bookclub' });
 });
 
-module.exports = router;
+module.exports = router
