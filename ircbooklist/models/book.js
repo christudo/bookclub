@@ -1,7 +1,7 @@
 const books = [
-    {title: "The Refugees", publishingYear: 2016, bookId: "0"},
-    {title: "Lupita Mañana", publishingYear: 1998, bookId: "1"},
-    {title: "Weeping Under This Same Moon", publishingYear: 2008, bookId: "2"}
+    {title: "The Refugees", publishingYear: 2016, recommendationYear: 2023, bookId: "0"},
+    {title: "Lupita Mañana", publishingYear: 1998, recommendationYear: 2023, bookId: "1"},
+    {title: "Weeping Under This Same Moon", publishingYear: 2008, recommendationYear: 2023, bookId: "2"}
   ];
   
   exports.add = (book) => {

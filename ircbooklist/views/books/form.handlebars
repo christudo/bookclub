@@ -15,6 +15,11 @@
     <label for="publishing_year">Publishing year</label>
     <input type="number" step="1" placeholder="2000" id="publishing_year" name="publishingYear" {{#if book}}value="{{book.publishingYear}}"{{/if}}>
   </div>
+  <div>
+    <label for="year_of_rec">Year of Recommendation</label>
+    <input type="number" step="1" placeholder="2023" id="year_of_rec" name="recommendationYear" {{#if book}}value="{{book.recommendationYear}}"{{/if}}>
+</div>
+
   <div class="mb-3">
     <label for="authorIds">Author</label>
     <select name="authorIds" multiple id="authorIds">
