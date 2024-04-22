@@ -11,6 +11,10 @@ router.get('/form', async (req, res, next) => {
   res.render('authors/form', { title: 'Bookclub || Authors' });
 });
 
+router.get('/form', async (req, res, next) => {
+  res.render('books/form', { title: 'Bookclub || Books', authors: Author.all });
+});
+
 router.get('/edit', async (req, res, next) => {
   let authorIndex = req.query.id;
   let author = Author.get(authorIndex);
@@ -20,6 +24,12 @@ router.get('/edit', async (req, res, next) => {
 router.post('/upsert', async (req, res, next) => {
   console.log('body: ' + JSON.stringify(req.body));
   Author.upsert(req.body);
+  let createdOrupdated = req.body.id ? 'updated' : 'created';
+  req.session.flash = {
+    type: 'info',
+    intro: 'Success!',
+    message: `the author has been ${createdOrupdated}!`,
+  };
   res.redirect(303, '/authors');
 });
 

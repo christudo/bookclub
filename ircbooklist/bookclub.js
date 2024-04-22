@@ -1,15 +1,28 @@
-const express = require('express')                  // Include the express package
-const bodyParser = require('body-parser')           // call the express function to create the app
+const express = require('express')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const expressSession = require('express-session')
 
-const indexRouter = require('./routes/index');      // Include the new index.js route file
+const { credentials } = require('./config')
+
+
+const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
+const usersRouter = require('./routes/users');
 
 const app = express()
-const port = 3000                                   // set the port of the web server
+const port = 3000
 
 //extra platform setup
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser(credentials.cookieSecret));
+app.use(expressSession({
+  secret: credentials.cookieSecret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
 
 // view engine setup
 var handlebars = require('express-handlebars').create({
@@ -31,33 +44,48 @@ var handlebars = require('express-handlebars').create({
     dateStr: (v) => v && v.toLocaleDateString("en-US")
   }
 });
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-app.use('/', indexRouter);                          // attaching the router to the “/” url path
+// session configuration
+//make it possible to use flash messages, and pass them to the view
+app.use((req, res, next) => {
+  res.locals.flash = req.session.flash
+  delete req.session.flash
+  next()
+})
+//make the current user available in views
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser
+  next()
+})
+
+// routes
+app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
+app.use('/users', usersRouter);
 
 /* GET home page. */
-//app.use('/', function(req, res, next) {             // the / stands for the root route, or homepage
-//    res.send("<h1>Happy World Book Day</h1>");      // if the first argument of app.use() is a string, 
-//  });                                               // In this case, it is used for the index route
+app.use('/', function(req, res, next) {
+    res.send("<h1>Happy World Book Day</h1>");
+  });
 
 // custom 404 page
-app.use((req, res) => {                             // set the “default” page handler
-  res.type('text/plain')                            // Set the response type to plain text
-  res.status(404)                                   // set the response status code to 404
-  res.send('404 - Not Found')                       // set the content of the response
+app.use((req, res) => {
+  res.status(404)
+  res.send('<h1>404 - Not Found</h1>')
 })
 
 // custom 500 page
-app.use((err, req, res, next) => {                  // set the function of how to deal with errors
-  console.error(err.message)                        // get the error message and write it to the console
-  res.type('text/plain')                            // Set the response type to plain text
-  res.status(500)                                   // set the response status code to 500
-  res.send('500 - Server Error')                    // set the content of the response
+app.use((err, req, res, next) => {
+  console.error(err.message)
+  res.type('text/plain')
+  res.status(500)
+  res.send('500 - Server Error')
 })
 
-app.listen(port, () => console.log(                 // set our app up to listen to a given port.
-`Express started on http://localhost:${port}; ` +   // when listening has started execute this function
-`press Ctrl-C to terminate.`))                      // that writes to the console
+app.listen(port, () => console.log(
+  `Express started on http://localhost:${port}; ` +
+  `press Ctrl-C to terminate.`))

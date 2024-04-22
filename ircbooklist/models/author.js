@@ -1,7 +1,7 @@
 const authors = [
-  {firstName: "Viet", lastName: "Thanh Nguyen"},
-  {firstName: "Patricia", lastName: "Beatty"},
-  {firstName: "Jana", lastName: "Laiz"},
+  {firstName: "Viet", lastName: "Thanh Nguyen", authorIds: ["0", "2"]},
+  {firstName: "Patricia", lastName: "Beatty", authorId: "1"},
+  {firstName: "Jana", lastName: "Laiz", authorId: "2"},
 ];
 
 exports.add = (author) => {

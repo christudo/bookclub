@@ -4,12 +4,35 @@
     <title>{{title}}</title>
   </head>
   <body>
+    {{#if flash}}
+      <div>
+        <strong>{{flash.intro}}</strong> {{{flash.message}}}
+      </div>
+    {{/if}}
     <nav>
       <ul>
         <li><a href="/">Bookclub home</a></li>
-        <li><a href="/authors">authors</a></li>
+        <li><a href="/authors">Authors</a></li>
         <li><a href="/books">books</a></li>
+        {{#if currentUser}}
+          <li>
+            Welcome {{currentUser.name}}
+          </li>
+          <li>
+            <form action="/users/logout" role="form" method="post">
+              <button type="submit" class="btn">Logout</button>
+            </form>
+          </li>
+        {{else}}
+          <li>
+            <a href="/users/register">register</a>
+          </li>
+          <li>
+            <a href="/users/login">login</a>
+          </li>
+        {{/if}}
       </ul>
     </nav>
+    {{{body}}}
   </body>
 </html>
