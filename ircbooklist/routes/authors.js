@@ -11,10 +11,6 @@ router.get('/form', async (req, res, next) => {
   res.render('authors/form', { title: 'Bookclub || Authors' });
 });
 
-router.get('/form', async (req, res, next) => {
-  res.render('books/form', { title: 'Bookclub || Books', authors: Author.all });
-});
-
 router.get('/edit', async (req, res, next) => {
   let authorIndex = req.query.id;
   let author = Author.get(authorIndex);
@@ -35,3 +31,4 @@ router.post('/upsert', async (req, res, next) => {
 
 
 module.exports = router;
+

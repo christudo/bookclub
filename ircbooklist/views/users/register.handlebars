@@ -1,6 +1,7 @@
 <h1>Create a new account</h1>
 
 <form action="/users/register" role="form" method="post">
+<input type="hidden" name="_csrf" value="{{_csrfToken}}">
   <div>
     <label for="name">Name</label>
     <input type="text" id="name" name="name">

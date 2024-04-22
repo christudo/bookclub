@@ -1,6 +1,7 @@
 <h1>New Book</h1>
 
 <form action="/books/upsert" role="form" method="post">
+<input type="hidden" name="_csrf" value="{{_csrfToken}}">
   {{#if book}}
     <div>
       <h2>{{book.title}}</h2>
@@ -19,11 +20,10 @@
     <label for="year_of_rec">Year of Recommendation</label>
     <input type="number" step="1" placeholder="2023" id="year_of_rec" name="recommendationYear" {{#if book}}value="{{book.recommendationYear}}"{{/if}}>
 </div>
-
-  <div class="mb-3">
-    <label for="authorIds">Author</label>
-    <select name="authorIds" multiple id="authorIds">
-      <option disabled selected value>-- select Author --</option>
+<div>
+    <label for="author_ids">Author</label>
+    <select name="authorIds" multiple id="author_ids">
+      <option disabled value>-- select Author --</option>
       {{#each authors}}
         <option value="{{@index}}" {{#if (and @root.book (in @root.book.authorIds @index))}}selected{{/if}}>
           {{this.firstName}} {{this.lastName}}

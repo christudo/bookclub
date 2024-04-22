@@ -16,10 +16,13 @@
         <li><a href="/books">books</a></li>
         {{#if currentUser}}
           <li>
+            <a href="/users/profile">
             Welcome {{currentUser.name}}
+            </a>
           </li>
           <li>
             <form action="/users/logout" role="form" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrfToken}}">
               <button type="submit" class="btn">Logout</button>
             </form>
           </li>
