@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const csrf = require('csurf')
+const path = require('path');
 
 const { credentials } = require('./config')
 
@@ -69,6 +70,9 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.session.currentUser
   next()
 })
+
+// adding routes for bootstrap
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')))
 
 // routes
 app.use('/', indexRouter);
