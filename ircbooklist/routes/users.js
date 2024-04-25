@@ -83,25 +83,8 @@ router.get('/profile', async (req, res, next) => {
   if (helpers.isNotLoggedIn(req, res)) {
     return
   }
-  const booksUser = BookUser.AllForUser(req.session.currentUser.email);
-  booksUser.forEach((bookUser) => {
-    bookUser.book = Book.get(bookUser.bookId)
-  })
+  const booksUser = BookUser.AllForUser(req.session.currentUser);
   res.render('users/profile', { title: 'Bookclub || Profile', user: req.session.currentUser, booksUser: booksUser });
 });
-
-router.post('/updateStatus', async (req, res, next) => {
-    if (helpers.isNotLoggedIn(req, res)) {
-      return;
-    }
-    const { bookId, status } = req.body;
-    req.session.flash = {
-      type: 'info',
-      intro: 'Success!',
-      message: 'Status updated successfully',
-    };
-    res.redirect(303, '/users/profile');
-  }
-);
 
 module.exports = router

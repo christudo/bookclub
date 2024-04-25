@@ -1,8 +1,3 @@
-/*const books = [
-    {title: "The Refugees", publishingYear: 2016, recommendationYear: 2023, authorIds: ["0"], bookId: "951955956"},
-    {title: "Lupita Mañana", publishingYear: 1998, recommendationYear: 2023, authorIds: ["1"], bookId: "982159393"},
-    {title: "Weeping Under This Same Moon", publishingYear: 2008, recommendationYear: 2023, authorIds: ["2"], bookId: "229036096"}
-  ];*/
 const db = require('../database')
 
 exports.all = async () => {
@@ -33,7 +28,7 @@ exports.all = async () => {
     let newBook = db.camelize(rows)[0]
     await DeleteAuthorsForBook(newBook) // By first deleting the relevant authors_books records, we prevent accidental duplicates
     await addAuthorsToBook(newBook, book.authorIds)
-  return newBook
+    return newBook
   }
   
   exports.upsert = async (book) => {

@@ -6,7 +6,7 @@ router.post('/upsert', async (req, res, next) => {
   console.log('body: ' + JSON.stringify(req.body))
   let bookId = req.body.bookId;
   redirect = `/books/show/${bookId}`;
-  BookUser.upsert(req.body);
+  await BookUser.upsert(req.body);
   req.session.flash = {
     type: 'info',
     intro: 'Success!',

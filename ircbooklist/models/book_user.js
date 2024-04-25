@@ -1,43 +1,47 @@
-const books_users = [
-    {bookId: "0", userEmail: "cdacruz@pratt.edu", status: "done reading"},
-    {bookId: "1", userEmail: "rvanmech@pratt.edu", status: "reading"},
-    {bookId: "2", userEmail: "dpan@pratt.edu", status: "to read"},
-    {bookId: "3", userEmail: "cdacruz@pratt.edu", status: "reading"}
-  ];
+const db = require('../database')
   
   exports.statuses = [
     "to read","reading","done reading"
   ]
   
-  exports.add = (book_user) => {
-    books_users.push(book_user);
+  exports.add = async (bookUser) => {
+    return db.getPool()
+      .query(`INSERT INTO
+              books_users(book_id, user_id, read_status)
+              VALUES($1, $2, $3) RETURNING *`,
+        [bookUser.bookId, bookUser.userId, bookUser.status]);
   }
 
-  exports.update = (idx, book_user) => {
-    books_users[idx] = book_user;
+  exports.update = async (bookUser) => {
+    return await db.getPool()
+      .query("UPDATE books_users SET read_status = $1 where id = $2 RETURNING *",
+        [bookUser.status, bookUser.id]);
   }
   
-  exports.upsert = (book_user) => {
-    let idx = books_users.findIndex((bu) => {
-      return bu.bookId == book_user.bookId &&
-             bu.userEmail == book_user.userEmail;
-    });
-    if (idx == -1) {
-      exports.add(book_user);
+  exports.upsert = (bookUser) => {
+    if (bookUser.id) {
+      return exports.update(bookUser);
     } else {
-      exports.update(idx,book_user);
+      return exports.add(bookUser);
     }
   }
   
-  exports.get = (bookId, userEmail) => {
-    return books_users.find((book_user) => {
-      return book_user.bookId == bookId && book_user.userEmail == userEmail;
-    });
+  exports.get = async (book, user) => {
+    const { rows } = await db.getPool().query(`
+      select *
+      from books_users
+      where book_id = $1 and user_id = $2`,
+      [book.id, user.id])
+    return db.camelize(rows)[0]
   }
   
-  exports.AllForUser = (userEmail) => {
-    return books_users.filter((book_user) => {
-      return book_user.userEmail == userEmail;
-    });
+  exports.AllForUser = async (user) => {
+    const { rows } = await db.getPool().query(`
+      select books.title, books_users.read_status
+      from books_users
+      join books on books.id = books_users.book_id
+      where user_id = $1;`,
+      [user.id]);
+    return db.camelize(rows);
   }
   

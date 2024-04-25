@@ -2,7 +2,7 @@
 <a href="/authors/form">Create a new author</a>
 {{#each authors}}
 <li>
-  {{@index}} - {{this.firstName}} {{this.lastName}}
-  <a href="/authors/edit?id={{@index}}">edit</a>
+  {{this.id}} - {{this.firstName}} {{this.lastName}}
+  <a href="/authors/edit?id={{this.id}}">edit</a>
 </li>
 {{/each}}
