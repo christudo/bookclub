@@ -24,12 +24,11 @@ const camelizeKeys = (obj) => {
 };
 
 module.exports = {
-    getPool: () => {
-      if (pool) return pool; // if it is already there, grab it here
-      pool = new pg.Pool({connectionString});
-      return pool;
-    },
-    camelize: (rows) => {
-      return rows.map(camelizeKeys)
-    }}
- 
+  getPool: () => {
+    if (pool) return pool; // if it is already there, grab it here
+    pool = new pg.Pool({connectionString});
+    return pool;
+  },
+  camelize: (rows) => {
+    return rows.map(camelizeKeys)
+  }}

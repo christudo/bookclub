@@ -3,31 +3,33 @@
     {title: "Lupita Mañana", publishingYear: 1998, recommendationYear: 2023, authorIds: ["1"], bookId: "982159393"},
     {title: "Weeping Under This Same Moon", publishingYear: 2008, recommendationYear: 2023, authorIds: ["2"], bookId: "229036096"}
   ];*/
-  const db = require('../database')
+const db = require('../database')
 
 exports.all = async () => {
-  const { rows } = await db.getPool().query("select * from books order by id");
+  const { rows } = await db.getPool().query("SELECT * FROM books ORDER BY id");
   return db.camelize(rows);
 }
 
   exports.add = async (book) => {
     const { rows } = await db.getPool()
     .query("INSERT INTO books(title, publishing_year, year_of_rec) VALUES($1, $2, $3) RETURNING *",
-      [book.title, book.publishingYear, book.recommendationYear]);
+    [book.title, book.description, book.publishingYear, book.recommendationYear]
+  );
     let newBook = db.camelize(rows)[0]
     await addAuthorsToBook(newBook, book.authorIds)
     return newBook
   }
 
   exports.get = async (id) => {
-    const { rows } = await db.getPool().query("select * from books where id = $1", [id])
+    const { rows } = await db.getPool().query("SELECT * FROM books WHERE id = $1", [id])
   return db.camelize(rows)[0]
   }  
 
   exports.update = async (book) => {
     const { rows } = await db.getPool()
-    .query("UPDATE books SET title = $1, publishing_year = $2, genre_id = $3 where id = $4 RETURNING *",
-      [book.title, book.publishingYear, book.recommendationYear, book.id]);
+    .query("UPDATE books SET title = $1, publishing_year = $2, year_of_rec = $3 where id = $4 RETURNING *",
+    [book.title, book.description, book.publishingYear, book.recommendationYear, book.id]
+  );
     let newBook = db.camelize(rows)[0]
     await DeleteAuthorsForBook(newBook) // By first deleting the relevant authors_books records, we prevent accidental duplicates
     await addAuthorsToBook(newBook, book.authorIds)
@@ -54,5 +56,5 @@ exports.all = async () => {
   }
   
   const DeleteAuthorsForBook = async (book) => {
-    db.getPool().query(`DELETE from authors_books where book_id = $1`, [book.id]);
+    db.getPool().query("DELETE FROM authors_books WHERE book_id = $1", [book.id]);
   }

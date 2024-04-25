@@ -14,19 +14,19 @@ insert into authors (first_name, last_name) values ('Abdulrazak', 'Gurnah');
 insert into authors (first_name, last_name) values ('Sarah', 'Nović');
 insert into authors (first_name, last_name) values ('Mohsin', 'Hamid');
 
-insert into books values (default, 'The Refugees', 1, 2016);
-insert into books values (default, 'Lupita Mañana', 2, 1998);
-insert into books values (default, 'Weeping Under This Same Moon', 3, 2008);
-insert into books values (default, 'The Amazing Adventures of Kavalier & Clay', 4, 2012);
-insert into books values (default, 'The Ungrateful Refugee', 5, 2020);
-insert into books values (default, 'On Earth We'’'re Briefly Gorgeous', 6, 2021);
-insert into books values (default, 'The Girl Who Smiled Beads: A Story of War and What Comes After', [7,8], 2019);
-insert into books values (default, 'The Kite Runner', 9, 2011);
-insert into books values (default, 'The When Stars are Scattered', [10,11], 2020);
-insert into books values (default, 'We Are Displaced: My Journey and Stories from Refugee Girls Around the World', 12, 2021);
-insert into books values (default, 'Gravel Heart', 13, 2018);
-insert into books values (default, 'Girl at War', 14, 2016);
-insert into books values (default, 'Exit West', 15, 2017);
+insert into books values (default, 'The Refugees', 'In this collection of stories written over a 20-year period, Nguyen explores questions of identity, love, and family as experienced by immigrants.', 2016, 2023);
+insert into books values (default, 'Lupita Mañana', 'Lupita must leave Mexico for America after her  father''s  accidental death sinks her family into poverty.', 1998, 2023);
+insert into books values (default, 'Weeping Under This Same Moon', 'This is a story of cultural discovery and friendship.', 2008, 2023);
+insert into books values (default, 'The Amazing Adventures of Kavalier & Clay', 'Inspired by the true stories of comic- book pioneers like Stan Lee, Jack Kirby, Joe Shuster and Jerry Siegel, Michael Chabon''s Pulitzer Prize-winning novel follows the lives of fictional superhero creators Joe Kavalier and Sam Clay.', 2012, 2023);
+insert into books values (default, 'The Ungrateful Refugee', 'This story begins during Dina''s childhood, after fleeing Iran, at age 8, with her mother and brother, the three of them living in a cramped hotel-turned-refugee camp in Italy.', 2020, 2023);
+insert into books values (default, 'On Earth We''re Briefly Gorgeous', 'T.S. Eliot Award-winning poet Ocean Vuong describes the Vietnamese-American refugee experience in his semi-autobiographical first novel, a vivid, lyrical account of the legacy of conflict and trauma haunting three generations of a family.', 2021, 2023);
+insert into books values (default, 'The Girl Who Smiled Beads: A Story of War and What Comes After', 'Clemantine Wamariya, working with Elizabeth Weil, tells the story of her childhood escape from the Rwandan massacre and her search for safety with her older sister.', 2019, 2023);
+insert into books values (default, 'The Kite Runner', 'This is a graphic novel that explores Mohamed and his brother''s life in Dadaab refugee camp, Kenya, told with beautiful illustrations that depict the reality for displaced children', 2011, 2023);
+insert into books values (default, 'The When Stars are Scattered', 'This is a graphic novel that explores Mohamed and his brother''s life in Dadaab refugee camp, Kenya, told with beautiful illustrations that depict the reality for displaced children.', 2020, 2023);
+insert into books values (default, 'We Are Displaced: My Journey and Stories from Refugee Girls Around the World', 'Part-memoir, part oral history, this book explores the multitudinous experiences of refugees, as well as Malala''s own story of displacement when a young child in Pakistan.', 2021, 2023);
+insert into books values (default, 'Gravel Heart', 'As the book''s protagonist, Salim, moves from Zanzibar in the 1960s to London in the 1990s, he confronts issues of identity, belonging and betrayal.', 2018, 2023);
+insert into books values (default, 'Girl at War', 'This powerful novel, set in former Yugoslavia, follows the adventures of a young girl whose only chance for survival is to escape war and rebuild a new life elsewhere.', 2016, 2023);
+insert into books values (default, 'Exit West', 'Magical realism conveys the strangeness of displacement in this short novel by Pakistani author Mohsin Hamid.', 2017, 2023);
 
 insert into authors_books values (default, 1, 1 );
 insert into authors_books values (default, 2, 2 );
@@ -34,21 +34,12 @@ insert into authors_books values (default, 3, 3 );
 insert into authors_books values (default, 4, 4 );
 insert into authors_books values (default, 5, 5 );
 insert into authors_books values (default, 6, 6 );
-insert into authors_books values (default, [7,8], 7 );
+insert into authors_books values (default, 7, 7 );
+insert into authors_books values (default, 8, 7 );
 insert into authors_books values (default, 9, 9 );
-insert into authors_books values (default, [10,11], 10 );
+insert into authors_books values (default, 10, 10 );
+insert into authors_books values (default, 11, 10 );
 insert into authors_books values (default, 12, 12 );
 insert into authors_books values (default, 13, 13 );
 insert into authors_books values (default, 14, 14 );
 insert into authors_books values (default, 15, 15 );
-
-
-
-
-
-
-
-
-
-
-

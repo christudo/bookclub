@@ -19,6 +19,7 @@ CREATE TABLE "books" (
   "description" varchar,
   "publishing_year" Int,
   "year_of_rec" Int,
+  "oclc_id" varchar,
   PRIMARY KEY ("id")
 );
 

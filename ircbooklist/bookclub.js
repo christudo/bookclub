@@ -32,7 +32,7 @@ app.use(csrf({ cookie: true }))
 app.use((req, res, next) => {
   res.locals._csrfToken = req.csrfToken()
   next()
-})
+});
 
 // view engine setup
 var handlebars = require('express-handlebars').create({

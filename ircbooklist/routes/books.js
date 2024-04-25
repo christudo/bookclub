@@ -52,4 +52,13 @@ router.post('/upsert', async (req, res, next) => {
   res.redirect(303, '/books')
 });
 
+router.get('/', async (req, res, next) => {
+  try {
+    const books = await Book.find();
+    res.render('books', { title: 'Books', books: books });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
