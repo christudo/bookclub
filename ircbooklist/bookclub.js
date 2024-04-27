@@ -73,7 +73,8 @@ app.use((req, res, next) => {
 
 // adding routes for bootstrap
 app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')))
-
+app.use('/images', express.static('images'));
+app.use(express.static('images'));
 // routes
 app.use('/', indexRouter);
 //app.use('/authors', authorsRouter);
@@ -113,6 +114,7 @@ app.post('/submit', (req, res) => {
 
   res.status(403).send('Invalid CSRF token');
 })
+
 
 app.listen(port, () => console.log(
 `Express started on http://localhost:${port}; ` +
