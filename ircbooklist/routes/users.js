@@ -84,7 +84,17 @@ router.get('/profile', async (req, res, next) => {
     return
   }
   const booksUser = await BookUser.AllForUser(req.session.currentUser);
-  res.render('users/profile', { title: 'Bookclub || Profile', user: req.session.currentUser, booksUser: booksUser });
+  res.render('users/profile', { title: 'Bookclub || Profile', user: req.session.currentUser, booksUser: booksUser, statuses: BookUser.statuses });
 });
+
+router.get('/show/:id', async (req, res, next) => {
+  const book = await Book.get (req.params.id)
+  let templateVars = {
+    title: 'Bookclub || Books',
+    book: book,
+    bookId: req.params.id,
+    statuses: BookUser.statuses
+  };
+})
 
 module.exports = router;

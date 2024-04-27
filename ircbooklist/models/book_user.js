@@ -37,8 +37,7 @@ const db = require('../database')
   
   exports.AllForUser = async (user) => {
     const { rows } = await db.getPool().query(`
-      select books.title, books_users.read_status
-      from books_users
+      select books.title, books_users.read_status, books_users.book_id from books_users
       join books on books.id = books_users.book_id
       where user_id = $1;`,
       [user.id]);

@@ -7,6 +7,7 @@
 {{/if}}
 <p>Originally published in {{book.publishingYear}}</p>
 <p>Recommended by the IRC in {{book.yearOfRec}}</p>
+<p>{{book.description}}</p>
 {{#if currentUser}}
 <div>
   <form action="/books_users/upsert" role="form" method="post">

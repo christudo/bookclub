@@ -95,6 +95,25 @@ app.use((err, req, res, next) => {
   res.send('500 - Server Error')
 })
 
+// Route setup
+app.get('/', (req, res) => {
+  // Pass the CSRF token to the view template
+  res.render('index', { csrfToken: req.csrfToken() });
+});
+
+app.post('/submit', (req, res) => {
+  // Validate CSRF token
+  if (req.body._csrf !== req.csrfToken()) {
+    return res.status(403).send('Invalid CSRF token');
+  }
+
+  app.use((err, req, res, next) => {
+    if (err.code !== 'EBADCSRFTOKEN') return next(err);
+  })  
+
+  res.status(403).send('Invalid CSRF token');
+})
+
 app.listen(port, () => console.log(
 `Express started on http://localhost:${port}; ` +
 `press Ctrl-C to terminate.`))

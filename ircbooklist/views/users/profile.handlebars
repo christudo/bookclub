@@ -1,7 +1,27 @@
 <h1>{{currentUser.name}}</h1>
-
 My booklist:
+<ul>
   {{#each booksUser}}
-    <li>{{this.title}} -- {{this.readStatus}}</li>
+    <li>{{title}} -- {{this.readStatus}}
+<div>
+  <form action="/books_users/upsert" role="form" method="post">
+    <input type="hidden" name="_csrf" value="{{@root._csrfToken}}">
+    <input type="hidden" name="bookId" value="{{bookId}}">
+    <input type="hidden" name="userEmail" value="{{@root.currentUser.email}}">
+    <input type="hidden" name="userId" value="{{@root.currentUser.id}}">
+
+    <label for="status">Status</label>
+    <select name="status" id="status">
+      {{#unless (and bookUser this.readStatus)}}
+        <option disabled value>-- select status --</option>
+      {{/unless}}
+      {{#each @root.statuses}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+    </li>
   {{/each}}
 </ul>
