@@ -6,13 +6,15 @@
 
 {{/if}}
 <p>Originally published in {{book.publishingYear}}</p>
-<p>Recommended by the IRC in {{book.recommendationYear}}</p>
+<p>Recommended by the IRC in {{book.yearOfRec}}</p>
 {{#if currentUser}}
 <div>
   <form action="/books_users/upsert" role="form" method="post">
     <input type="hidden" name="_csrf" value="{{_csrfToken}}">
     <input type="hidden" name="bookId" value="{{bookId}}">
     <input type="hidden" name="userEmail" value="{{currentUser.email}}">
+    <input type="hidden" name="userId" value="{{currentUser.id}}">
+
     <label for="status">Status</label>
     <select name="status" id="status">
       {{#unless (and bookUser bookUser.status)}}

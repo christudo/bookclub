@@ -1,19 +1,7 @@
 <h1>{{currentUser.name}}</h1>
 
 My booklist:
-<ul>
   {{#each booksUser}}
-    <li>{{this.book.title}}
-      <form action="/users/updateStatus" method="POST">
-        <input type="hidden" name="_csrf" value="{{@root._csrfToken}}">
-        <input type="hidden" name="bookId" value="{{this.book.id}}">
-        <select name="status">
-          <option value="reading" {{#if (eq this.status "reading")}}selected{{/if}}>reading</option>
-          <option value="done reading" {{#if (eq this.status "done reading")}}selected{{/if}}>done reading</option>
-          <option value="to read" {{#if (eq this.status "to read")}}selected{{/if}}>to read</option>
-        </select>
-        <button type="submit">Update</button>
-      </form>
-    </li>
+    <li>{{this.title}} -- {{this.readStatus}}</li>
   {{/each}}
 </ul>
