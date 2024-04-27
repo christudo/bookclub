@@ -8,7 +8,7 @@ const path = require('path');
 const { credentials } = require('./config')
 
 const indexRouter = require('./routes/index');
-const authorsRouter = require('./routes/authors');
+////const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
 const usersRouter = require('./routes/users');
 const booksUsersRouter = require('./routes/books_users');
@@ -76,7 +76,7 @@ app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstra
 
 // routes
 app.use('/', indexRouter);
-app.use('/authors', authorsRouter);
+//app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
 app.use('/users', usersRouter);
 app.use('/books_users', booksUsersRouter);
