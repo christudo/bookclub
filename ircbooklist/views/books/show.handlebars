@@ -3,7 +3,6 @@
 <p>
   Written by {{#each authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
 </p>
-
 {{/if}}
 <p>Originally published in {{book.publishingYear}}</p>
 <p>Recommended by the IRC in {{book.yearOfRec}}</p>
@@ -15,6 +14,7 @@
     <input type="hidden" name="bookId" value="{{bookId}}">
     <input type="hidden" name="userEmail" value="{{currentUser.email}}">
     <input type="hidden" name="userId" value="{{currentUser.id}}">
+    <input type="hidden" name="id" value="{{bookUser.id}}">
 
     <label for="status">Status</label>
     <select name="status" id="status">
@@ -22,7 +22,7 @@
         <option disabled value>-- select status --</option>
       {{/unless}}
       {{#each statuses}}
-        <option value="{{this}}" {{#if (and @root.bookUser (eq @root.bookUser.status this))}}selected{{/if}}>{{this}}</option>
+        <option value="{{this}}" {{#if (and @root.bookUser (eq @root.bookUser.readStatus this))}}selected{{/if}}>{{this}}</option>
       {{/each}}
     </select>
     <button type="submit">Submit</button>

@@ -28,8 +28,7 @@ const db = require('../database')
   
   exports.get = async (book, user) => {
     const { rows } = await db.getPool().query(`
-      select *
-      from books_users
+      select * from books_users
       where book_id = $1 and user_id = $2`,
       [book.id, user.id])
     return db.camelize(rows)[0]
@@ -37,7 +36,7 @@ const db = require('../database')
   
   exports.AllForUser = async (user) => {
     const { rows } = await db.getPool().query(`
-      select books.title, books_users.read_status, books_users.book_id from books_users
+      select books.title, books_users.* from books_users
       join books on books.id = books_users.book_id
       where user_id = $1;`,
       [user.id]);

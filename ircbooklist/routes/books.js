@@ -24,7 +24,7 @@ router.get('/show/:id', async (req, res, next) => {
 
   book.authors = await Author.allForBook(book);
   if (req.session.currentUser){
-    templateVars ['bookuser'] = await BookUser.get(book, req.session.currentUser);
+    templateVars['bookUser'] = await BookUser.get(book, req.session.currentUser);
   }
     res.render('books/show', templateVars);
   });
