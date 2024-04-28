@@ -1,7 +1,18 @@
-<h1>Books</h1>
+<h1 class="mt-2 mb-2">Books</h1>
 
-{{#each books}}
-<li>
-  <a href="/books/show/{{this.id}}">{{this.id}} {{this.title}} {{this.recommendationYear}}</a>
-</li>
-{{/each}}
+<div class="row">
+  {{#each books}}
+    <div class="book w-25">
+      <a href="/books/show/{{this.id}}">
+        <img
+        src="/images/{{image}}"
+        class="w-75 shadow-1-strong rounded mb-2"
+        alt=""
+        />
+      </a>
+      <p><strong>{{title}}</strong></p>
+      <p>{{this.recommendationYear}}</p>
+      <p class="text-secondary">{{description}}</p> <!-- Display book description -->
+    </div>
+  {{/each}}
+  </div>

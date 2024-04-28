@@ -1,13 +1,26 @@
-<h1>{{book.title}}</h1>
-{{#if authors}}
-<p>
-  Written by {{#each authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
-</p>
-{{/if}}
-<p>Originally published in {{book.publishingYear}}</p>
-<p>Recommended by the IRC in {{book.yearOfRec}}</p>
-<p>{{book.description}}</p>
-{{#if currentUser}}
+<h1 class="mt-2 mb-2">{{book.title}}</h1>
+
+<div class="ml-2">
+  {{#if authors}}
+    <p>
+      Written by {{#each authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
+    </p>
+  {{/if}}
+</div>
+<div class="w-50">
+  <a href="https://search.worldcat.org/title/{{book.oclcId}}">
+    <img
+      src="/images/{{book.image}}"
+      class="w-50 shadow-1-strong rounded mb-2"
+      alt=""
+    />
+  </a>  
+  <p>Originally published in {{book.publishingYear}}</p>
+  <p><i>Recommended by the IRC in {{book.yearOfRec}}</i></p>
+  <p>{{book.description}}</p>
+  {{#if currentUser}}
+</div>
+
 <div>
   <form action="/books_users/upsert" role="form" method="post">
     <input type="hidden" name="_csrf" value="{{_csrfToken}}">
@@ -15,7 +28,6 @@
     <input type="hidden" name="userEmail" value="{{currentUser.email}}">
     <input type="hidden" name="userId" value="{{currentUser.id}}">
     <input type="hidden" name="id" value="{{bookUser.id}}">
-
     <label for="status">Status</label>
     <select name="status" id="status">
       {{#unless (and bookUser bookUser.status)}}
