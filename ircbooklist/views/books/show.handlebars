@@ -7,6 +7,7 @@
     </p>
   {{/if}}
 </div>
+<div class="d-flex justify-content-end">
 <div class="w-50">
   <a href="https://search.worldcat.org/title/{{book.oclcId}}">
     <img
@@ -14,13 +15,15 @@
       class="w-50 shadow-1-strong rounded mb-2"
       alt=""
     />
-  </a>  
+  </a> 
+  </div>
+  <div class="w-50">
   <p>Originally published in {{book.publishingYear}}</p>
   <p><i>Recommended by the IRC in {{book.yearOfRec}}</i></p>
   <p class="fs-6">{{book.description}}</p>
   {{#if currentUser}}
-</div>
-
+  </div>
+</div> 
 <div>
   <form action="/books_users/upsert" role="form" method="post">
     <input type="hidden" name="_csrf" value="{{_csrfToken}}">
@@ -28,6 +31,7 @@
     <input type="hidden" name="userEmail" value="{{currentUser.email}}">
     <input type="hidden" name="userId" value="{{currentUser.id}}">
     <input type="hidden" name="id" value="{{bookUser.id}}">
+    
     <label for="status">Status</label>
     <select name="status" id="status">
       {{#unless (and bookUser bookUser.status)}}
