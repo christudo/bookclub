@@ -5,14 +5,15 @@ insert into authors (first_name, last_name) values ('Michael', 'Chabon');
 insert into authors (first_name, last_name) values ('Dina', 'Nayeri');
 insert into authors (first_name, last_name) values ('Ocean', 'Vuong');
 insert into authors (first_name, last_name) values ('Clemantine', 'Wamariya');
-insert into authors (first_name, last_name) values ('Elizabeth', 'Weil');
 insert into authors (first_name, last_name) values ('Khaled', 'Hosseini');
-insert into authors (first_name, last_name) values ('Omar', 'Mohamed');
 insert into authors (first_name, last_name) values ('Victoria', 'Jamieson');
 insert into authors (first_name, last_name) values ('Malala', 'Yousafzai');
 insert into authors (first_name, last_name) values ('Abdulrazak', 'Gurnah');
 insert into authors (first_name, last_name) values ('Sarah', 'Nović');
 insert into authors (first_name, last_name) values ('Mohsin', 'Hamid');
+insert into authors (first_name, last_name) values ('Elizabeth', 'Weil');
+insert into authors (first_name, last_name) values ('Omar', 'Mohamed');
+
 
 insert into books values (default, 'The Refugees', 'In this collection of stories written over a 20-year period, Nguyen explores questions of identity, love, and family as experienced by immigrants.', 
 2016, 2023, 951955956, '951955956_The Refugees_1.jpeg');
@@ -54,6 +55,6 @@ insert into authors_books values (default, 10, 10 );
 insert into authors_books values (default, 11, 10 );
 insert into authors_books values (default, 12, 12 );
 insert into authors_books values (default, 13, 13 );
-insert into authors_books values (default, 14, 14 );
-insert into authors_books values (default, 15, 15 );
+insert into authors_books values (default, 14, 7 );
+insert into authors_books values (default, 15, 9 );
 
