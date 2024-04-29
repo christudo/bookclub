@@ -17,9 +17,9 @@ insert into authors (first_name, last_name) values ('Omar', 'Mohamed');
 
 insert into books values (default, 'The Refugees', 'In this collection of stories written over a 20-year period, Nguyen explores questions of identity, love, and family as experienced by immigrants.', 
 2016, 2023, 951955956, '951955956_The Refugees_1.jpeg');
-insert into books values (default, 'Lupita Mañana', 'Lupita must leave Mexico for America after her  father''s  accidental death sinks her family into poverty.', 
+insert into books values (default, 'Lupita Mañana', 'Lupita must leave Mexico for America after her  father''s  accidental death sinks her family into poverty. A keen reader all her life, and author of more than 50 books, Patricia Beatty is the embodiment of her passion for positive, impactful stories.', 
 1998, 2023, 982159393, '982159393_LupitaManana_2.jpeg');
-insert into books values (default, 'Weeping Under This Same Moon', 'This is a story of cultural discovery and friendship.', 
+insert into books values (default, 'Weeping Under This Same Moon', 'This is a story of cultural discovery and friendship. Mei, an artist whose life is disrupted by the Vietnam War, leaves her home and parents to make a dangerous journey by boat to safety. Her journey is made more harrowing because she has two younger siblings in tow.', 
 2008, 2023, 229036096, '229036096_WeepingUnderThisSameMoon_3.jpeg');
 insert into books values (default, 'The Amazing Adventures of Kavalier & Clay', 'Inspired by the true stories of comic- book pioneers like Stan Lee, Jack Kirby, Joe Shuster and Jerry Siegel, Michael Chabon''s Pulitzer Prize-winning novel follows the lives of fictional superhero creators Joe Kavalier and Sam Clay.', 
 2012, 2023, 973965195, '973965195_TheAmazingAdventuresofKavalierClay_4.jpeg');
@@ -39,7 +39,7 @@ insert into books values (default, 'Gravel Heart', 'As the book''s protagonist, 
 2018, 2023, 1001540717, '1001540717_GravelHeart_11.jpeg');
 insert into books values (default, 'Girl at War', 'This powerful novel, set in former Yugoslavia, follows the adventures of a young girl whose only chance for survival is to escape war and rebuild a new life elsewhere.', 
 2016, 2023, 923572150, '923572150_GirlatWar_12.jpeg');
-insert into books values (default, 'Exit West', 'Magical realism conveys the strangeness of displacement in this short novel by Pakistani author Mohsin Hamid.', 
+insert into books values (default, 'Exit West', 'Magical realism conveys the strangeness of displacement in this short novel by Pakistani author Mohsin Hamid. A young couple escape their war-torn city through a mysterious portal, only to discover magical doors popping up around the world.', 
 2017, 2023, 951925351, '951925351_ExitWest_13.jpeg');
 
 insert into authors_books values (default, 1, 1 );
@@ -49,10 +49,10 @@ insert into authors_books values (default, 4, 4 );
 insert into authors_books values (default, 5, 5 );
 insert into authors_books values (default, 6, 6 );
 insert into authors_books values (default, 7, 7 );
-insert into authors_books values (default, 8, 7 );
+insert into authors_books values (default, 8, 8 );
 insert into authors_books values (default, 9, 9 );
 insert into authors_books values (default, 10, 10 );
-insert into authors_books values (default, 11, 10 );
+insert into authors_books values (default, 11, 11 );
 insert into authors_books values (default, 12, 12 );
 insert into authors_books values (default, 13, 13 );
 insert into authors_books values (default, 14, 7 );
