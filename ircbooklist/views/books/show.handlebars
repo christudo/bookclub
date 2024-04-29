@@ -1,11 +1,6 @@
 <h1 class="mt-2 mb-2">{{book.title}}</h1>
 
 <div class="ml-2">
-  {{#if authors}}
-    <p>
-      Written by {{#each authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
-    </p>
-  {{/if}}
 </div>
 <div class="d-flex justify-content-end">
 <div class="w-50">
@@ -21,6 +16,11 @@
   <p>Originally published in {{book.publishingYear}}</p>
   <p><i>Recommended by the IRC in {{book.yearOfRec}}</i></p>
   <p class="fs-6">{{book.description}}</p>
+  {{#if book.authors}}
+    <p>
+      Written by {{#each book.authors}}{{this.first_name}} {{this.last_name}}{{#unless @last}}, {{/unless}}{{/each}}
+    </p>
+  {{/if}}
   {{#if currentUser}}
   </div>
 </div> 
